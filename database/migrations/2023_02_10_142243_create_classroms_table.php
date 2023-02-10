@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('school_year_id')->nullable();
             $table->unsignedBigInteger('class_level_id')->nullable();
             $table->unsignedBigInteger('program_id')->nullable();
-            $table->unsignedBigInteger('student_id')->unique()->nullable();
+            $table->unsignedBigInteger('student_id')->nullable();
             $table->unsignedBigInteger('teacher_id')->nullable();
             $table->unsignedBigInteger('teacher_kmi_id')->nullable();
             $table->string('title')->nullable();

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Student;
+use App\Models\Teacher;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -20,7 +22,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
+        'status',
         'password',
     ];
 
@@ -42,6 +46,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function teachers()
+    {
+        return $this->hasOne(Teacher::class);
+    }
+
+    public function students()
+    {
+        return $this->hasOne(Student::class);
+    }
 
     public function getPermissionArray()
     {

@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\TeacherChildren;
+use App\Models\TeacherDocument;
+use App\Models\TeacherEducation;
+use App\Models\TeacherCertification;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Teacher extends Model
 {
@@ -12,8 +17,28 @@ class Teacher extends Model
     protected $table = 'teachers';
     protected $guarded = [];
 
-    public function classroms()
+    public function users()
     {
-        return $this->hasMany(Classrom::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function teacher_educations()
+    {
+        return $this->hasMany(TeacherEducation::class);
+    }
+
+    public function teacher_certifications()
+    {
+        return $this->hasMany(TeacherCertification::class);
+    }
+
+    public function teacher_childrens()
+    {
+        return $this->hasMany(TeacherChildren::class);
+    }
+
+    public function teacher_documents()
+    {
+        return $this->hasMany(TeacherDocument::class);
     }
 }
